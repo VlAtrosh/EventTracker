@@ -21,3 +21,12 @@ EventFlow/
 │   ├── style.css                     # Стили оформления
 │   └── app.js                        # Клиентская логика (API запросы)
 ```
+
+
+<img width="1920" height="912" alt="Снимок экрана (1099)" src="https://github.com/user-attachments/assets/bd9fd77c-a4ea-46b5-924c-6fc3da62946c" />
+
+<img width="1920" height="951" alt="Снимок экрана (1101)" src="https://github.com/user-attachments/assets/b60d8599-0a9f-46bf-899d-f532af060688" />
+
+<img width="1920" height="1008" alt="Снимок экрана (1102)" src="https://github.com/user-attachments/assets/868b41f8-46ca-44f2-b66d-9cd87ac08156" />
+
+
