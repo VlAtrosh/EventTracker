@@ -3,7 +3,7 @@
 Блок-Схема
 ![Untitled (3)](https://github.com/user-attachments/assets/83ec3a87-d50a-4c43-bec2-f71a8b47e3b1)
 
-
+```
 EventFlow/
 │
 ├── backend/                          # Бэкенд часть (FastAPI)
@@ -18,5 +18,4 @@ EventFlow/
 │   ├── index.html                    # Главная страница
 │   ├── style.css                     # Стили оформления
 │   └── app.js                        # Клиентская логика (API запросы)
-│
-└── README.md                         # Документация проекта
+```
