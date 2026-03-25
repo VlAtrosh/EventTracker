@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventFlow - Управление мероприятиями</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Страница авторизации -->
+    <div id="page-auth">
+        <div class="card">
+            <h1>🎯 EventFlow</h1>
+            <p style="text-align: center; color: #666; margin-bottom: 20px;">Управление мероприятиями и регистрация участников</p>
+            
+            <div class="tabs">
+                <button class="tab active" data-tab="login">Вход</button>
+                <button class="tab" data-tab="register">Регистрация</button>
+            </div>
+            
+            <!-- Форма входа -->
+            <form id="login-form">
+                <div class="form-group">
+                    <input type="text" id="login-username" placeholder="Логин" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="login-password" placeholder="Пароль" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Войти</button>
+                <div id="login-error" class="error-message"></div>
+            </form>
+            
+            <!-- Форма регистрации -->
+            <form id="register-form" style="display: none;">
+                <div class="form-group">
+                    <input type="text" id="reg-username" placeholder="Логин" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="reg-email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="reg-password" placeholder="Пароль (минимум 6 символов)" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                <div id="reg-error" class="error-message"></div>
+                <div id="reg-success" class="success-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Основное приложение -->
+    <div id="page-app" style="display: none;">
+        <header>
+            <div class="header-left">
+                <h2>🎯 EventFlow</h2>
+            </div>
+            <div class="header-right">
+                <span id="user-name" class="user-name"></span>
+                <span id="user-role" class="user-role"></span>
+                <button id="logout-btn" class="btn btn-outline">Выйти</button>
+            </div>
+        </header>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-view="events">📅 Все мероприятия</button>
+            <button class="nav-tab" data-view="my">⭐ Мои мероприятия</button>
+            <button class="nav-tab admin-only" data-view="create" style="display: none;">➕ Создать мероприятие</button>
+        </div>
+        
+        <div id="main-content" class="main-content">
+            <div style="text-align: center; padding: 40px;">Загрузка...</div>
+        </div>
+    </div>
+    
+    <script src="/static/app.js"></script>
+</body>
+</html>
