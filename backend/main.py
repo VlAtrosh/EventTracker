@@ -23,7 +23,6 @@ app.add_middleware(
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login")
 
-# ============ HELPERS ============
 def get_current_user(token: str = Depends(oauth2_scheme)):
     payload = decode_token(token)
     if not payload:
@@ -42,7 +41,6 @@ def check_admin(user=Depends(get_current_user)):
         raise HTTPException(status_code=403, detail="Нет прав")
     return user
 
-# ============ AUTH ENDPOINTS ============
 @app.post("/api/auth/register")
 async def register(user: UserCreate):
     """Регистрация нового пользователя"""
@@ -88,7 +86,6 @@ async def get_me(user=Depends(get_current_user)):
         created_at=user["created_at"]
     )
 
-# ============ EVENTS ENDPOINTS ============
 @app.get("/api/events")
 async def get_events(current_user=Depends(get_current_user)):
     with get_connection() as conn:
@@ -130,7 +127,6 @@ async def create_event(event: EventCreate, admin=Depends(check_admin)):
         conn.commit()
         return {"id": cursor.lastrowid, "ok": True}
 
-# ============ REGISTRATIONS ENDPOINTS ============
 @app.post("/api/registrations/{event_id}")
 async def register_event(event_id: int, current_user=Depends(get_current_user)):
     with get_connection() as conn:
@@ -206,12 +202,10 @@ async def get_participants(event_id: int, admin=Depends(check_admin)):
         
         return [dict(p) for p in participants]
 
-# ============ ТЕСТОВЫЙ ЭНДПОИНТ ============
 @app.get("/api/test")
 async def test():
     return {"status": "ok", "message": "Сервер работает"}
 
-# ============ СТАТИКА (ИСПРАВЛЕНО) ============
 frontend_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend")
 
 # Корневой маршрут отдает index.html
