@@ -9,7 +9,6 @@ const mainContent = document.getElementById('main-content');
 const userNameSpan = document.getElementById('user-name');
 const userRoleSpan = document.getElementById('user-role');
 
-// ============ ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ============
 async function apiFetch(endpoint, options = {}) {
     const token = localStorage.getItem('token');
     const headers = {
@@ -73,7 +72,6 @@ document.querySelectorAll('.tab').forEach(tab => {
     });
 });
 
-// ============ РЕГИСТРАЦИЯ ============
 document.getElementById('register-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     
@@ -124,7 +122,6 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
     }
 });
 
-// ============ ВХОД ============
 document.getElementById('login-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     
@@ -164,7 +161,6 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     }
 });
 
-// ============ ЗАГРУЗКА МЕРОПРИЯТИЙ ============
 async function loadEvents() {
     mainContent.innerHTML = '<div style="text-align: center; padding: 40px;">⏳ Загрузка...</div>';
     
@@ -208,7 +204,6 @@ async function loadEvents() {
     `;
 }
 
-// ============ МОИ МЕРОПРИЯТИЯ ============
 async function loadMyEvents() {
     mainContent.innerHTML = '<div style="text-align: center; padding: 40px;">⏳ Загрузка...</div>';
     
@@ -239,7 +234,7 @@ async function loadMyEvents() {
     `;
 }
 
-// ============ СОЗДАНИЕ МЕРОПРИЯТИЯ ============
+
 function showCreateForm() {
     mainContent.innerHTML = `
         <div class="create-form">
@@ -293,7 +288,6 @@ async function createNewEvent() {
     }
 }
 
-// ============ РЕГИСТРАЦИЯ НА МЕРОПРИЯТИЕ ============
 window.registerForEvent = async (eventId) => {
     const response = await apiFetch(`/registrations/${eventId}`, {
         method: 'POST'
@@ -308,7 +302,7 @@ window.registerForEvent = async (eventId) => {
     }
 };
 
-// ============ ОТМЕНА РЕГИСТРАЦИИ ============
+
 window.cancelRegistration = async (eventId) => {
     if (!confirm('Вы уверены, что хотите отменить регистрацию?')) return;
     
@@ -330,7 +324,7 @@ window.cancelRegistration = async (eventId) => {
     }
 };
 
-// ============ ПОКАЗАТЬ УЧАСТНИКОВ ============
+
 window.showParticipants = async (eventId) => {
     const response = await apiFetch(`/events/${eventId}/participants`);
     
@@ -352,7 +346,7 @@ window.showParticipants = async (eventId) => {
     }
 };
 
-// ============ ЗАГРУЗКА ПРИЛОЖЕНИЯ ============
+
 async function loadApp() {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -412,7 +406,6 @@ function logout() {
     if (errorDiv) errorDiv.textContent = '';
 }
 
-// ============ ЗАПУСК ============
 document.getElementById('logout-btn').addEventListener('click', logout);
 
 // Добавляем функцию в глобальную область
